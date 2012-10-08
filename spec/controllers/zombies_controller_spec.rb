@@ -32,4 +32,27 @@ describe ZombiesController do
 			assigns[:zombies].should == [@bob,@carol]
 		end
 	end
+
+	describe "#show" do
+		before do
+			@zombie = Zombie.create(:name=>"Bob")
+		end
+		it "should show details for a zombie" do
+			get :show
+			response.should be_successful
+			assigns[:zombies].should == [@zombie]
+		end
+	end
+
+	describe "#destroy" do
+		before do
+			@count = Zombie.count
+		end
+		it "should remove a zombie" do
+			post :destroy, :zombie=>{:name=>"Bob", :graveyard=>"Shady Oaks"}
+			response.should redirect_to zombies_path
+			Zombie.count.should == @count - 1
+			flash[:notice].should == "Deleted Zombie"
+		end
+	end
 end

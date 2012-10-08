@@ -11,4 +11,13 @@ class ZombiesController < ApplicationController
 	def index
 		@zombies = Zombie.order(:name)
 	end
+
+	def show
+		@zombie = Zombie.find( params[:id] )
+	end
+
+	def destroy
+		Zombie.destroy( params[:id] )
+		redirect_to zombies_path, :notice=>"Deleted Zombie"
+	end
 end

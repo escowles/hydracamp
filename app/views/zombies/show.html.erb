@@ -1,0 +1,4 @@
+<h1>Zombies Details</h1>
+<p><%=label :name, "Name"%>: <%= @zombie.name%></p>
+<p><%=label :graveyard, "Graveyard"%>: <%= @zombie.graveyard%></p>
+<p><%=link_to 'Destroy', zombie_path(@zombie), :confirm=>"Are you sure?", :method=>:delete%></p>
