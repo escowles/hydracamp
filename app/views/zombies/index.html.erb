@@ -1,0 +1,6 @@
+<h1>All Zombies</h1>
+<ul>
+	<%- @zombies.each do |zombie| %>
+		<li><%= zombie.name%> (<%= zombie.graveyard%>)</li>
+	<%end%>
+</ul>
